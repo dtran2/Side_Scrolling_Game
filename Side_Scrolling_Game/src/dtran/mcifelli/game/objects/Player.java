@@ -1,6 +1,9 @@
 package dtran.mcifelli.game.objects;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+import java.util.ArrayList;
+
+//Unused; commented out for now
+//import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 /**
  * Object class for player(s)
@@ -10,18 +13,21 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 public class Player {
 	private Weapon weapon;		//Current equipped weapon
 	private Utility utility;	//Current equipped utility
-	private int health;		//Health of the player
-	private int energy;		//amount of energy player contains
-	private int speed;		//Speed the player can move at
-	private int powerUp;	//value of power up gauge
-	private Position pos;	//player's position
-	private List<Weapon> inventory;
+	private int health;			//Health of the player
+	private int energy;			//amount of energy player contains
+	private int speed;			//Speed the player can move at
+	private int powerUp;		//value of power up gauge
+	private Position pos;		//player's position
+	private ArrayList<Weapon> weaponInventory;	//Player's current list of weapons they own
+	private ArrayList<Utility> utilityInventory;//Player's current list of utilities they own
 	
 	//Initialize Player values
 	public Player(int initX, int initY){
 		this.pos = new Position(initX, initY);
-		this.inventory = new Inventory();
+		this.weaponInventory = new ArrayList<Weapon>();
+		this.utilityInventory = new ArrayList<Utility>();
 		this.weapon = Weapon.blade;
+		this.weaponInventory.add(weapon);
 		this.utility = Utility.solarPanel;
 		this.health = 100;
 		this.energy = 100;
@@ -39,11 +45,11 @@ public class Player {
 	}
 	//Returns equipped weapon
 	public Weapon getWeapon(){
-		return this.wep;
+		return this.weapon;
 	}
 	//Returns equipped utility
 	public Utility getUtility(){
-		return this.util;
+		return this.utility;
 	}
 	//Returns current health;
 	public int getHealth(){
@@ -60,9 +66,13 @@ public class Player {
 	public int getPowerUp(){
 		return this.powerUp;
 	}
-	//Returns the player's Inventory
-	public Inventory getInventory(){
-		return this.inventory;
+	//Returns the player's Weapon Inventory
+	public ArrayList<Weapon> getWeaponInventory(){
+		return this.weaponInventory;
+	}
+	//Retrusn the player's Utility inventory
+	public ArrayList<Utility> getUtilityInventory(){
+		return this.utilityInventory;
 	}
 	/**
 	 * Methods for changing player values
@@ -73,13 +83,17 @@ public class Player {
 	public void movePlayer(int newX, int newY){
 		this.pos.move(newX, newY);
 	}
-	//Switch weapons
+	//Switch weapons (player must own the weapon)
 	public void changeWeapon(Weapon newWep){
-		this.wep = newWep;
+		if(weaponInventory.contains(newWep)){
+			this.weapon = newWep;
+		}
 	}
-	//Switch utilities
+	//Switch utilities (player must own the utility)
 	public void changeUtility(Utility newUtil){
-		this.util = newUtil;
+		if(utilityInventory.contains(newUtil)){
+			this.utility = newUtil;
+		}
 	}
 	//Update health
 	public void changeHealth(int newHealth){
@@ -99,18 +113,18 @@ public class Player {
 	}
 	//Remove a weapon from the player's inventory
 	public void removeWeapon(Weapon wep){
-		this.inventory.removeWeapon(wep);
+		this.weaponInventory.remove(wep);
 	}
 	//Remove a utility from the player's inventory
 	public void removeUtility(Utility util){
-		this.inventory.removeUtility(util);
+		this.weaponInventory.remove(util);
 	}
 	//Add a weapon to the player's inventory
 	public void addWeapon(Weapon wep){
-		this.inventory.addWeapon(wep);
+		this.weaponInventory.add(wep);
 	}
 	//Add a utility to the player's inventory
 	public void addUtility(Utility util){
-		this.inventory.addUtility(util);
+		this.utilityInventory.add(util);
 	}
 }

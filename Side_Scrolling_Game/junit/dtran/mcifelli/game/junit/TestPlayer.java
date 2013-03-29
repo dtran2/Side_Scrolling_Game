@@ -89,5 +89,9 @@ public class TestPlayer {
 		player.changePowerUp(player.getPowerUp() - 24);
 		assertEquals(player.getPowerUp(), 32);
 	}
-
+	
+	//TODO: Add test case for getting weaponInventory
+	//TODO: Add test case for getting utilityInventory
+	//TODO:Add test case for adding/removing weapons from the weaponInventory
+	//TODO: Add test case for adding/removing utilities from the utilityInventory
 }
