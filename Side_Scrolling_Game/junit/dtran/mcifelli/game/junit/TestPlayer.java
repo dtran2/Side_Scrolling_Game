@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import dtran.mcifelli.game.objects.Player;
 import dtran.mcifelli.game.objects.Utility;
-import dtran.mcifelli.game.objects.Weapon;
+import dtran.mcifelli.game.objects.Weapons;
 /**
  * JUnit Class for Player object class
  * Tests object's methods
@@ -28,7 +28,7 @@ public class TestPlayer {
 	}
 	@Test
 	public void testGetWeapon(){
-		assertSame(player.getWeapon(), Weapon.blade);
+		assertSame(player.getWeapon(), Weapons.blade);
 	}
 	@Test
 	public void testGetUtility(){
@@ -58,8 +58,8 @@ public class TestPlayer {
 	}
 	@Test
 	public void testChangeWeapon(){
-		player.changeWeapon(Weapon.megaPunch);
-		assertSame(player.getWeapon(), Weapon.megaPunch);
+		player.changeWeapon(Weapons.megaPunch);
+		assertSame(player.getWeapon(), Weapons.megaPunch);
 	}
 	@Test
 	public void testChangeUtility(){
