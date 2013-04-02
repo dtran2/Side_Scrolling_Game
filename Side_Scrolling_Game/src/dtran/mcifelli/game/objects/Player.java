@@ -18,21 +18,20 @@ public class Player {
 	private int speed;			//Speed the player can move at
 	private int powerUp;		//value of power up gauge
 	private Position pos;		//player's position
-	private ArrayList<Weapon> weaponInventory;	//Player's current list of weapons they own
-	private ArrayList<Utility> utilityInventory;//Player's current list of utilities they own
+	private ArrayList<Item> inventory;	//Player's current list of owned items
 	
 	//Initialize Player values
-	public Player(int initX, int initY){
+	public Player(int initX, int initY){		
 		this.pos = new Position(initX, initY);
-		this.weaponInventory = new ArrayList<Weapon>();
-		this.utilityInventory = new ArrayList<Utility>();
-		this.weapon = Weapon.blade;
-		this.weaponInventory.add(weapon);
-		this.utility = Utility.solarPanel;
-		this.health = 100;
-		this.energy = 100;
-		this.speed = 10;
-		this.powerUp = 0;
+		inventory = new ArrayList<Item>();
+		weapon = new Weapon(Weapons.blade);
+		utility = new Utility(Utilities.solarPanel);
+		inventory.add(weapon);
+		inventory.add(utility);
+		health = 100;
+		energy = 100;
+		speed = 10;
+		powerUp = 0;
 		
 	}
 	
@@ -66,14 +65,11 @@ public class Player {
 	public int getPowerUp(){
 		return this.powerUp;
 	}
-	//Returns the player's Weapon Inventory
-	public ArrayList<Weapon> getWeaponInventory(){
-		return this.weaponInventory;
+	//Returns the player's Inventory
+	public ArrayList<Item> getInventory(){
+		return this.inventory;
 	}
-	//Retrusn the player's Utility inventory
-	public ArrayList<Utility> getUtilityInventory(){
-		return this.utilityInventory;
-	}
+	
 	/**
 	 * Methods for changing player values
 	 * position, weapon, utility, health, energy, speed, power up, and items in inventory
@@ -85,13 +81,13 @@ public class Player {
 	}
 	//Switch weapons (player must own the weapon)
 	public void changeWeapon(Weapon newWep){
-		if(weaponInventory.contains(newWep)){
+		if(inventory.contains(newWep)){
 			this.weapon = newWep;
 		}
 	}
 	//Switch utilities (player must own the utility)
 	public void changeUtility(Utility newUtil){
-		if(utilityInventory.contains(newUtil)){
+		if(inventory.contains(newUtil)){
 			this.utility = newUtil;
 		}
 	}
@@ -113,18 +109,18 @@ public class Player {
 	}
 	//Remove a weapon from the player's inventory
 	public void removeWeapon(Weapon wep){
-		this.weaponInventory.remove(wep);
+		this.inventory.remove(wep);
 	}
 	//Remove a utility from the player's inventory
 	public void removeUtility(Utility util){
-		this.weaponInventory.remove(util);
+		this.inventory.remove(util);
 	}
 	//Add a weapon to the player's inventory
 	public void addWeapon(Weapon wep){
-		this.weaponInventory.add(wep);
+		this.inventory.add(wep);
 	}
 	//Add a utility to the player's inventory
 	public void addUtility(Utility util){
-		this.utilityInventory.add(util);
+		this.inventory.add(util);
 	}
 }
