@@ -4,8 +4,8 @@ import dtran.mcifelli.game.map.Terrain;
 
 public class Game {
 	// FINALS
-	private final int HEIGHT = 50;
-	private final int WIDTH = 50;
+	public final int HEIGHT = 10;
+	public final int WIDTH = 50;
 	
 	// FIELDS
 	private Terrain[][] map = new Terrain[HEIGHT][WIDTH];
