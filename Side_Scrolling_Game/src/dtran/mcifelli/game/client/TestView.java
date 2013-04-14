@@ -84,8 +84,9 @@ public class TestView extends JPanel{
 		}*/
 		for(int column = 0; column < game.getWidth(); column++){
 			for(int row = 0; row < game.getHeight(); row++){
-				g.setColor(game.getTerrainBlock(column, row).getColor());
-				g.fillRect(column, row, 1, 1);
+				g.setColor(game.getTerrainBlock(row, column).getColor());
+				g.fillRect(row, column, 10, 10);
+				g.setColor(Color.BLACK);
 			}
 		}
 		

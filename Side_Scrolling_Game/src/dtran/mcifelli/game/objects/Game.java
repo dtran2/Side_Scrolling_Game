@@ -4,8 +4,8 @@ import dtran.mcifelli.game.map.Terrain;
 
 public class Game {
 	// FINALS
-	private final int HEIGHT = 10;
-	private final int WIDTH = 50;
+	private final int HEIGHT = 400;
+	private final int WIDTH = 800;
 	
 	// FIELDS
 	private Terrain[][] map = new Terrain[HEIGHT][WIDTH];
@@ -19,7 +19,7 @@ public class Game {
 	public boolean setTerrainAtLocation(int row, int col, Terrain terrain) {
 		if ((0 <= row && row < HEIGHT) && (0 <= col && col < WIDTH)) {
 			map[row][col] = terrain;
-			return true;
+			return true; 
 		}
 		return false;
 	}
