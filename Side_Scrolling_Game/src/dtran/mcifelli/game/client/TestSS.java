@@ -27,7 +27,7 @@ public class TestSS {
 
 				// Create a frame (top-level window) to enclose the KaboomView
 				JFrame frame = new JFrame();
-				frame.setTitle("Tetris!");
+				frame.setTitle("TESTING!");
 				frame.setContentPane(view);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.pack();
